@@ -6,4 +6,5 @@ export interface PostsProps {
 
 export interface DataProps {
   data: PostsProps[]
+  loading?: boolean
 }

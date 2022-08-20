@@ -1,26 +1,18 @@
 import React from 'react'
-import _isEmpty from 'lodash/isEmpty'
+import _get from 'lodash/get'
 import Box from '@mui/material/Box'
 import Posts from 'components/Posts'
-import CircularProgress from '@mui/material/CircularProgress'
 import { servicePosts } from 'common/services/posts'
 
-// interface PostsProps {
-//   id: number
-//   title: string
-//   author: string
-// }
-
 function App () {
-  const { data } = servicePosts.getAllPosts()
+  const response = servicePosts.getAllPosts()
 
   return (
     <Box>
-      {
-        _isEmpty(data)
-          ? <CircularProgress/>
-          : <Posts data={data}/>
-      }
+      <Posts
+      data={_get(response, 'data', [])}
+      loading={!response.data}
+      />
     </Box>
   )
 }
