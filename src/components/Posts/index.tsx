@@ -1,21 +1,12 @@
 import React from 'react'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import _map from 'lodash/map'
-
-interface PostsProps {
-  id: number
-  title: string
-  author: string
-}
-
-interface DataProps {
-  data: PostsProps[]
-}
+import DataGrid from 'components/DataGrid'
+import { DataProps } from './types'
+import { columns } from './help/columns'
 
 const Posts = ({ data }: DataProps) => {
-  return <List>
-    {_map(data, item => <ListItem key={item.id}>{item.title}</ListItem>)}
-  </List>
+  return <DataGrid
+  rows={data}
+  columns={columns}
+  />
 }
 export default Posts
